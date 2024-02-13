@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Estilos personalizados */
+html {
+  @apply bg-gray-950;
+}
+
+.pages {
+  width: 78%;
+  height: 80vh;
+  margin-top: 5%;
+  margin-left: 20%;
+  border-radius: 25px;
+  @apply bg-gray-800;
+}
+
+/* Añade estilos adicionales según sea necesario */
