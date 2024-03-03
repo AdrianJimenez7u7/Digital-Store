@@ -9,7 +9,7 @@ urlpatterns = [
     #path('api/inventory/', include('apps.inventory.urls')),
     #path('api/payment/', include('apps.payment.urls')),
     path('api/category/', include('apps.category.urls')),
-    #path('api/product/', include('apps.product.urls')),
+    path('api/product/', include('apps.product.urls')),
     #path('api/search/', include('apps.search.urls')),
     #path('api/security/', include('apps.security.urls')),
     #path('api/statistic/', include('apps.statistic.urls')),

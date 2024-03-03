@@ -13,7 +13,8 @@ html {
   margin-top: 5%;
   margin-left: 20%;
   border-radius: 25px;
-  @apply bg-gray-800;
+   
+  @apply bg-gray-100 dark:bg-gray-800;
 }
 
 /* Añade estilos adicionales según sea necesario */

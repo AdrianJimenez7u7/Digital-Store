@@ -5,9 +5,9 @@ class Item extends Component {
     const {link, textSpan, iconName} = this.props;
     return (
       <div className="item">
-        <a href={link} className="link flex">
+        <a href={link} className="link flex ">
           <i className={iconName}></i>
-          <span>{textSpan}</span>
+          <span className="text-black dark:text-gray-50">{textSpan}</span>
         </a>
       </div>
     );

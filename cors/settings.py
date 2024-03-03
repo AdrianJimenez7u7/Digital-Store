@@ -161,6 +161,9 @@ CORS_ALLOWED_WHITELIST = env.list('CORS_ORIGIN_WHITELIST_DEV')
 #poner direccion de servidor react
 CSRF_TRUSTED_ORIGINS = env.list('CSRF_TRUSTED_ORIGINS_DEV')
 EMAIL_BACKEND='django.core.mail.backends.console.EmailBacend'
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+CORS_ALLOW_ALL_ORIGINS = True
+
 
 if not DEBUG:
     ALLOWED_HOSTS = env.list('ALLOWED_HOSTS_DEPLOY')
