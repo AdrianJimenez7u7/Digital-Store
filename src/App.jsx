@@ -7,23 +7,35 @@ import Footer from "containers/navigation/Footer";
 import Navbar from "containers/navigation/Navbar";
 import LateralBar from "components/lateralBar";
 import Categories from "containers/pages/Categories";
+import Login from "containers/pages/Login";
 function App() {
-  return (
-    
-    <Provider store={store}>
-      <LateralBar/>
-      <div className="pages">
+  return (    
+    <Provider store={store}>  
         <BrowserRouter>
-          <Routes>
-            <Route path="*" element={<Error404/>} />
-            <Route path="/" element={<Products/>} />
-            <Route path="/categories" element={<Categories/>} />
-          </Routes>
-        </BrowserRouter>
-        
-      </div>
-    </Provider>
-    
+          <NavigationWrapper/>
+        </BrowserRouter>    
+    </Provider>  
+  );
+}
+
+function NavigationWrapper() {
+  // Verifica si la ruta actual está en las rutas con LateralBar
+  //const showPagesClass = lateralBarRoutes.includes(location.pathname);
+
+  return (
+    <>
+      <Routes>
+        <Route path="/login" element={<Login/>}/>
+      </Routes>
+      <div className="pages" >     
+      <LateralBar/>
+      <Routes>
+        <Route path="*" element={<Error404/>} />
+        <Route path="/products" element={<Products/>} />   
+        <Route path="/categories" element={<Categories/>} />
+      </Routes>
+      </div>     
+    </>
   );
 }
 

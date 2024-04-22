@@ -30,10 +30,10 @@
   top: 0;
   left: 0;
   height: 80%;
-  width: 15%;
+  max-width: 15%;
   min-width: 8%;
   padding: 15px 10px;
-  margin-top: 5%;
+  margin-top: 2%;
   margin-left: 30px;
   border-radius: 25px;
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
@@ -189,3 +189,13 @@
     display: block;
   }
 }
+
+@keyframes cerrarBarra {
+  0% {
+    width: 95%;
+  }
+  100% {
+    width: 0;
+  }
+}
+

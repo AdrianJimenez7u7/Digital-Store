@@ -5,7 +5,7 @@ import {
 
 const initialState= {
     categories: null
-}
+};
 
 export default function categories(state = initialState, action){
     const{type, payload} = action;
@@ -13,7 +13,7 @@ export default function categories(state = initialState, action){
         case GET_CATEGORIES_SUCCESS:
             return{
                 ...state,
-                categories: payload
+                categories: payload.categories
             }
         case GET_CATEGORIES_FAIL:
             return{

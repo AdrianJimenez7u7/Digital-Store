@@ -17,13 +17,14 @@ export const get_categories = () => async dispatch =>{
                 type: GET_CATEGORIES_SUCCESS,
                 payload: res.data
             })
-            console.log(res);
+
         }else{
             dispatch({
                 type: GET_CATEGORIES_FAIL
             })
         }
     }catch(error){
+        console.log(error)
         dispatch({
             type: GET_CATEGORIES_FAIL
         })

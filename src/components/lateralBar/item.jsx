@@ -7,7 +7,7 @@ class Item extends Component {
       <div className="item">
         <a href={link} className="link flex ">
           <i className={iconName}></i>
-          <span className="text-black dark:text-gray-50">{textSpan}</span>
+          <span className="text-base  text-black dark:text-gray-50" >{textSpan}</span>
         </a>
       </div>
     );

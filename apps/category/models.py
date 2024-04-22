@@ -20,9 +20,17 @@ class Category(models.Model):
         views = viewsCount.objects.filter(category=self).count()
         return views
     
+    def imagen_encoded(self):
+        from base64 import b64encode
+        if self.image:
+            return b64encode(self.image).decode('utf8')
+        return None
+    
 class viewsCount(models.Model):
     category = models.ForeignKey(Category, related_name='category_view_count', on_delete=models.CASCADE)
     ip_address = models.CharField(max_length=255)
     
     def __str__(self):
         return f"{self.ip_address}"
+    
+

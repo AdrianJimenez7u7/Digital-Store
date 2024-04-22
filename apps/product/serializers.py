@@ -20,7 +20,8 @@ class brandPublicSerializer(serializers.ModelSerializer):
         fields=[
             'id',
             'name',
-            'image'
+            'image',
+            'mail'
         ]
 
 class productSerializer(serializers.ModelSerializer):

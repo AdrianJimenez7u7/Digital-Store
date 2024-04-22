@@ -7,14 +7,42 @@ html {
   @apply bg-gray-950;
 }
 
+@import url("https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"); 
+
 .pages {
   width: 78%;
-  height: 80vh;
-  margin-top: 5%;
+  min-height: 80vh; /* Cambiamos 'height' a 'min-height' para permitir que se expanda cuando sea necesario */
+  margin-top: 2%;
   margin-left: 20%;
   border-radius: 25px;
-   
-  @apply bg-gray-100 dark:bg-gray-800;
+  overflow-y: auto; /* Agregamos la propiedad overflow-y con el valor auto */
+  
+  @apply bg-gray-50 dark:bg-gray-800;
+}
+.pages {
+  transition: width 0.5s ease, margin-top 0.5s ease, margin-left 0.5s ease;
 }
 
+
 /* Añade estilos adicionales según sea necesario */
+.table {
+  border-spacing: 0 15px;
+}
+
+i {
+  font-size: 1rem !important;
+}
+
+.table tr {
+  border-radius: 20px;
+}
+
+tr td:nth-child(n+7),
+tr th:nth-child(n+7) {
+  border-radius: 0 .625rem .625rem 0;
+}
+
+tr td:nth-child(1),
+tr th:nth-child(1) {
+  border-radius: .625rem 0 0 .625rem;
+}

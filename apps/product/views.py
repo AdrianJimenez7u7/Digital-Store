@@ -80,6 +80,7 @@ class SearchProduct(APIView):
             Q(description__icontains=search_term)|
             Q(category__name__icontains=search_term)
             )
-        print(matches)
-        serializer = publicproductSerializer(matches, many=True)
-        return Response({'filtered_products': serializer.data}, status=status.HTTP_200_OK)
+        pagination = LargeResultsSetPagination()
+        results = pagination.paginate_queryset(matches, request)
+        serializer = publicproductSerializer(results, many=True)
+        return pagination.get_paginated_response({'filtered_products': serializer.data})

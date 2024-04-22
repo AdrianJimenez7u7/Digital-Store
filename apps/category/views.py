@@ -18,7 +18,7 @@ class ListcategoriesViews(APIView):
                     item['id'] = category.id
                     item['name'] = category.name
                     item['description'] = category.description
-                    item['image'] = category.image
+                    item['image'] = category.imagen_encoded()
                     item['slug'] = category.slug
                     item['views'] = category.views
                     item['sub_categories'] = []
@@ -29,7 +29,7 @@ class ListcategoriesViews(APIView):
                             sub_item['id'] = sub_caregory.id
                             sub_item['name'] = sub_caregory.name
                             sub_item['description'] = sub_caregory.description
-                            sub_item['image'] = sub_caregory.image
+                            sub_item['image'] = sub_caregory.imagen_encoded()
                             sub_item['slug'] = sub_caregory.slug
                             sub_item['views'] = sub_caregory.views
                             item['sub_categories'].append(sub_item)
@@ -37,6 +37,6 @@ class ListcategoriesViews(APIView):
                         item.pop('sub_categories')
                     
                     orderCategory.append(item)       
-            return Response({'Categories': orderCategory}, status=status.HTTP_200_OK)
+            return Response({'categories': orderCategory}, status=status.HTTP_200_OK)
         else:
             return Response({'error': 'no hay categorias'}, status=status.HTTP_404_NOT_FOUND)
