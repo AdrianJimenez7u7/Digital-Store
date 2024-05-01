@@ -27,11 +27,11 @@ function Table({ products }) {
                     {product.name}
                   </td>
                   <td className="p-3">
-				  <div class="flex align-items-center">
-								<img class="rounded-full h-12 w-12  object-cover" src= {`data:image/jpeg;base64, ${product.brand.image}`} alt="unsplash image"/>
-								<div class="ml-3">
-									<div class="">{product.brand.name}</div>
-									<div class="text-gray-500">{product.brand.mail}</div>
+				  <div className="flex align-items-center">
+								<img className="rounded-full h-12 w-12  object-cover" src= {`data:image/jpeg;base64, ${product.brand.image}`} alt="unsplash image"/>
+								<div className="ml-3">
+									<div className="">{product.brand.name}</div>
+									<div className="text-gray-500">{product.brand.mail}</div>
 								</div>
 							</div>
                   </td>

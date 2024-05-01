@@ -101,7 +101,7 @@ const BarraLateral = ({ get_categories, categories }) => {
           </span>
           <div className="data_text">
             <h2 className="">Adrian Jimenez</h2>
-            <span className="email">isc_mjimenez2021@accitesz.com</span>
+            <span className="email text-gray-800 dark:text-gray-50">isc_mjimenez2021@accitesz.com</span>
           </div>
         </div>
       </div>
