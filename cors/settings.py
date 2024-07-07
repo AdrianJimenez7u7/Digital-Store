@@ -1,7 +1,7 @@
 from pathlib import Path
 import os
 import environ
-
+from datetime import timedelta
 env = environ.Env()
 environ.Env.read_env()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -13,6 +13,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get('SECRET_KEY')
+DOMAIN = os.environ.get('DEBUG')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DEBUG')
@@ -40,15 +41,21 @@ PROJECT_APPS = [
     'apps.product',
     'apps.search',
     'apps.security',
-    'apps.statistic'
+    'apps.statistic',
+    'apps.user'
 ]
 
 THIRD_PARTY_APPS = [
     'corsheaders',
     'rest_framework',
+    'rest_framework_simplejwt',
+    'rest_framework_simplejwt.token_blacklist',
+    'djoser',
+    'social_django',
     'coreapi',
     'ckeditor',
     'ckeditor_uploader',
+    
 ]
 
 INSTALLED_APPS = DJANGO_APPS + PROJECT_APPS + THIRD_PARTY_APPS
@@ -106,6 +113,12 @@ WSGI_APPLICATION = 'cors.wsgi.application'
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
+PASSWORD_HASHERS = [
+    'django.contrib.auth.hashers.PBKDF2PasswordHasher',
+    'django.contrib.auth.hashers.PBKDF2SHA1PasswordHasher',
+    'django.contrib.auth.hashers.Argon2PasswordHasher',
+    'django.contrib.auth.hashers.BCryptSHA256PasswordHasher',
+]
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -157,12 +170,50 @@ REST_FRAMEWORK = {
 }
 
 
+
 CORS_ALLOWED_WHITELIST = env.list('CORS_ORIGIN_WHITELIST_DEV')
 #poner direccion de servidor react
 CSRF_TRUSTED_ORIGINS = env.list('CSRF_TRUSTED_ORIGINS_DEV')
-EMAIL_BACKEND='django.core.mail.backends.console.EmailBacend'
+EMAIL_BACKEND='django.core.mail.backends.console.EmailBackend'
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 CORS_ALLOW_ALL_ORIGINS = True
+
+SIMPLE_JWT = {
+    'AUTH_HEDER_TYPES': ('JWT', ),
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=10080),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=30),
+    'ROTATE_REFRESH_TOKENS':True,
+    'BLACKLIST_AFTER_ROTATION': True,
+    'AUTH_TOKEN_CLASSES': (
+        'rest_framework_simplejwt.tokens.AccessToken',
+    )
+}
+
+DJOSER = {
+    'LOGIN_FIELD': 'email',
+    'USER_CREATE_PASSWORD_RETYPE': True,
+    'SEND_CONFIRMATION_EMAIL': True,
+    'SEND_ACTIVATION_EMAIL': True,
+    'SET_USERNAME_RETYPE':True,
+    'SET_PASSWORD_RETYPE':True,
+    'PASSWORD_RESET_CONFIRM_RETYPE': True,
+    'USERNAME_CHANGED_EMAIL_CONFIRMATION': True,
+    'PASSWORD_CHANGED_EMAIL_CONFIRMATION': True,
+    'PASSWORD_RESET_CONFIRM_URL': 'password/reset/confirm/{uid}/{token}',
+    'USERNAME_RESET_CONFIRM_URL': 'username/reset/confirm/{uid}/{token}',
+    'ACTIVATION_URL': 'activate/{uid}/{token}',
+    'SOCIAL_AUTH_TOKEN_STRATEGY': 'djoser.social.token.jwt.TokenStrategy',
+    'SOCIAL_AUTH_ALLOWED_REDIRECT_URIS': ['http://localhost:8000/google', 'http://localhost:8000/facebook'],
+    'SEND_ACTIVATION_EMAIL': True,
+    'SERIALIZERS': {
+        'user_create': 'apps.user.serializers.UserSerializer',
+        'user': 'apps.user.serializers.UserSerializer',
+        'current_user': 'apps.user.serializers.UserSerializer',
+        'user_delete': 'djoser.serializers.UserDeleteSerializer',
+    },
+}
+
+AUTH_USER_MODEL= 'user.UserAccount'
 
 
 if not DEBUG:

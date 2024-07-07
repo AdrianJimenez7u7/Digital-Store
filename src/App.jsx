@@ -2,11 +2,11 @@ import {BrowserRouter, Routes, Route} from "react-router-dom";
 import store from "store";
 import { Provider } from "react-redux";
 import Error404 from "containers/error/Error404";
-import Products from "containers/pages/Products";
 import LateralBar from "components/lateralBar";
-import Categories from "containers/pages/Categories";
+import Categories from "containers/pages/Categories/Categories";
 import Login from "containers/pages/Login";
-import FormProduct from "containers/pages/FormProduct";
+import FormCategory from "containers/pages/Categories/FormCategory";
+import Products from "containers/pages/Products/Products";
 function App() {
   return (    
     <Provider store={store}>  
@@ -33,7 +33,7 @@ function NavigationWrapper() {
         <Route path={"/products/:slug"} element={<Products/>} />   
         <Route path={"/products/:slug/:page"} element={<Products/>} />
         <Route path={'/products'} element={<Products/>} />   
-        <Route path={'/newproduct'} element={<FormProduct/>} />   
+        <Route path={'/category/new'} element={<FormCategory/>} />   
         <Route path="/categories" element={<Categories/>} />
 
       </Routes>

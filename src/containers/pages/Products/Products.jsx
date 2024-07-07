@@ -1,10 +1,11 @@
 import Table from "components/Table"
-import Target from "../../components/dashboard/Target"
+import Target from "../../../components/dashboard/Target"
 import Layout from "hocs/layouts/layout"
 import { useEffect, useState } from "react";
 import { get_product_list, get_product_list_category_page } from "redux/actions/products/products";
 import { connect } from "react-redux";
 import { useParams } from "react-router-dom";
+import Tablenext from "components/table/Tablenextjs";
 
 function Products({ get_product_list, get_product_list_category_page, products }) {
     const [noProductos, setNoProductos] = useState(0);
@@ -50,7 +51,7 @@ function Products({ get_product_list, get_product_list_category_page, products }
         <Layout>
 
             <div className="pt-5">
-                <h1 className="text-gray-50 text-center text-5xl dark: text-gray-700">Productos</h1>
+                <h1 className="text-gray-50 text-center text-5xl dark:text-gray-700">Productos</h1>
                 <div className="m-2 justify-around flex">
                     <Target value={noProductos} name={"Productos"} />
                     <Target value={200} name={"Total Stock"} />
@@ -68,6 +69,7 @@ function Products({ get_product_list, get_product_list_category_page, products }
                     <Table products={products || []} />
                 </div>
             </div>
+            <Tablenext></Tablenext>
         </Layout>
     )
 }

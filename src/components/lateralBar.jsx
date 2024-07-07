@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import "../styles/lateralBar.css";
 import { Item } from "./lateralBar/item";
 import { Button } from "@windmill/react-ui";
-import { PagesIcon, CardsIcon } from "assets/icons";
 
 const BarraLateral = ({ get_categories, categories }) => {
   const [barraOculta, setBarraOculta] = useState(false);
@@ -79,12 +78,9 @@ const BarraLateral = ({ get_categories, categories }) => {
         <div className="menu_items">
           <ul className="menu_item">
             <div className="menu_title flex">
-              <span className="title">Administacion</span>
+              <span className="title">Administación</span>
               <span className="line"></span>
             </div>
-            <li>
-              <Item link="https://mi-website.com" textSpan="Home" iconName={PagesIcon} />
-            </li>
             <li>
               <Item link="http://localhost:3000/products" textSpan="Productos" iconName="bx bx-home-alt" />
             </li>
